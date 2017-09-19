@@ -8,9 +8,7 @@ import initRedux from './initRedux'
 
 function parseCookies(ctx = {}, options = {}) {
   return cookie.parse(
-    ctx.req && ctx.req.headers.cookie
-      ? ctx.req.headers.cookie
-      : document.cookie,
+    ctx.req && ctx.req.headers.cookie ? ctx.req.headers.cookie : document.cookie,
     options
   )
 }
