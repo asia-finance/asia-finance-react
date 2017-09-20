@@ -4,7 +4,7 @@
     [
       "module-resolver",
       {
-        "root": ["./", "./app"]
+        "root": ["./", "./apps"]
       }
     ],
     "babel-plugin-inline-import-graphql-ast"

@@ -1,7 +1,7 @@
 export default {
-  example: (state = {}, { type }) => {
+  bv: (state = {}, { type }) => {
     switch (type) {
-      case 'EXAMPLE_ACTION':
+      case 'BV_EXAMPLE_ACTION':
         return {
           ...state
         }

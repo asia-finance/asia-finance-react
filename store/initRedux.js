@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import reducers from 'reducers'
+import bvReducers from 'business_vault/reducers'
+import kvReducers from 'knowledge_vault/reducers'
 
 let reduxStore = null
 
@@ -14,7 +15,8 @@ function create(apollo, initialState = {}) {
   return createStore(
     combineReducers({
       // Setup reducers
-      ...reducers,
+      ...bvReducers,
+      ...kvReducers,
       apollo: apollo.reducer()
     }),
     initialState, // Hydrate the store with server-side data

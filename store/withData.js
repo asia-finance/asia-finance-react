@@ -32,6 +32,7 @@ export default ComposedComponent =>
       // Run all graphql queries in the component tree
       // and extract the resulting data
       if (!process.browser) {
+        console.log('load data')
         if (context.res && context.res.finished) {
           // When redirecting, the response is finished.
           // No point in continuing to render
@@ -59,7 +60,7 @@ export default ComposedComponent =>
             </ApolloProvider>
           )
         } catch (error) {
-          console.log(error)
+          console.log('error', error)
         }
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
@@ -88,14 +89,18 @@ export default ComposedComponent =>
       // render within `getInitialProps()` above (since the entire prop tree
       // will be initialized there), meaning the below will only ever be
       // executed on the client.
-      this.apollo = initApollo(this.props.serverState, {
-        getToken: () => parseCookies().token
-      })
+      this.apollo = initApollo(
+        {},
+        {
+          getToken: () => parseCookies().token
+        }
+      )
+      this.redux = initRedux(this.apollo, props.serverState)
     }
 
     render() {
       return (
-        <ApolloProvider client={this.apollo}>
+        <ApolloProvider client={this.apollo} store={this.redux}>
           <ComposedComponent {...this.props} />
         </ApolloProvider>
       )
