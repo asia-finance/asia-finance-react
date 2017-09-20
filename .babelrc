@@ -6,6 +6,7 @@
       {
         "root": ["./", "./app"]
       }
-    ]
+    ],
+    "babel-plugin-inline-import-graphql-ast"
   ]
 }

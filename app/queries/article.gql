@@ -1,0 +1,11 @@
+query articleQuery {
+  articles(first: 10) {
+    edges {
+      node {
+        title
+        createdTime
+        content
+      }
+    }
+  }
+}
